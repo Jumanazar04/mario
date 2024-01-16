@@ -3,6 +3,9 @@ let currPlantTile;
 let score = 0; 
 let gameOver = false;
 
+
+
+
 window.onload = function() {
     setGame();
 
@@ -19,8 +22,8 @@ function setGame(){
         document.getElementById("board").appendChild(tile);
     }
 
-    setInterval(setMole, 1000);
-    setInterval(getPlant, 2000);
+    setInterval(setMole, 700);
+    setInterval(getPlant, 1000);
 }
 
 function getRundomTile(){
@@ -42,7 +45,7 @@ function setMole(){
     mole.src = "./monty-mole.png"
 
     let num = getRundomTile();
-    if(currMoleTile && currMoleTile.id == num){
+    if(currPlantTile && currPlantTile.id == num){
         return;
     }
     currMoleTile = document.getElementById(num)
@@ -86,3 +89,5 @@ function selectTile(){
         gameOver = true;
     }
 }
+
+btn.addEventListener("submit", gameOver = false)
