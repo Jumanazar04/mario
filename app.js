@@ -15,6 +15,7 @@ function setGame(){
         // <div id="0-8"></div>
         let tile = document.createElement('div'); 
         tile.id = i.toString();
+        tile.addEventListener("click", selectTile);
         document.getElementById("board").appendChild(tile);
     }
 
@@ -29,6 +30,9 @@ function getRundomTile(){
 }
 
 function setMole(){
+    if(gameOver){
+        return;
+    }
 
     if(currMoleTile) {
         currMoleTile.innerHTML = "";
@@ -46,9 +50,12 @@ function setMole(){
 }
 
 function getPlant(){
+    if(gameOver){
+        return;
+    }
 
-    if(currMoleTile){
-        currMoleTile.innerHTML = "";
+    if(currPlantTile){
+        currPlantTile.innerHTML = "";
     }
 
 
@@ -60,6 +67,22 @@ function getPlant(){
     if(currMoleTile && currMoleTile.id == num){
         return;
     }
-    currMoleTile = document.getElementById(num);
-    currMoleTile.appendChild(plant);
+    currPlantTile = document.getElementById(num);
+    currPlantTile.appendChild(plant);
+}
+
+function selectTile(){
+    if(gameOver){
+        return;
+    }
+
+
+    if(this == currMoleTile){
+        score += 10;
+        document.getElementById("score").innerText = score.toString();
+    }
+    else if ( this == currPlantTile) {
+        document.getElementById("score").innerText = "GAME OVER:" + score.toString();
+        gameOver = true;
+    }
 }
