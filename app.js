@@ -22,8 +22,8 @@ function setGame(){
         document.getElementById("board").appendChild(tile);
     }
 
-    setInterval(setMole, 700);
-    setInterval(getPlant, 1000);
+    setInterval(setMole, 1000);
+    setInterval(getPlant, 1200);
 }
 
 function getRundomTile(){
